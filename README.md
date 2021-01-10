@@ -11,11 +11,11 @@
 - [Dependencies](#dependencies)
 - [Install](#install)
 - [Mongo-Tools](#mongo-tools)
-- [License](#license)]
+- [License](#license)
 
 # Dependencies
 
-- `curl`, `git` - for downloads of upstream releases
+- `git` - for downloads of upstream releases
 - `bash` - asdf-vm is built on this
 - `go 1.15` - to build the tools
 
