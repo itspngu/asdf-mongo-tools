@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 
 set -e
@@ -19,11 +18,11 @@ set -e
 (
   cd "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools"
 
-  ./build.sh ssl
+  ./build.sh
 #  ./test.sh
 
   mkdir -p "$ASDF_INSTALL_PATH/bin"
-  cp "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools/bin/*" "$ASDF_INSTALL_PATH/bin/"
+  cp "./bin/*" "$ASDF_INSTALL_PATH/bin/"
 
   echo $'mongo-tools have been installed.'
 
