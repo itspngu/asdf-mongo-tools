@@ -25,11 +25,12 @@ _INSTALLED_GO_VERSION="$(go version | sed -n "s/.*go\([[:digit:]]\+\.[[:digit:]]
   exit 1
 )
 
-#unset _SUPPORTED_GO_VERSION _INSTALLED_GO_VERSION
+unset _SUPPORTED_GO_VERSION _INSTALLED_GO_VERSION
 
 (
   mkdir -p "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb"
-  git clone --depth 1 --branch "r$ADSF_INSTALL_VERSION" "https://github.com/mongodb/mongo-tools.git" "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb"
+  cd "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb"
+  git clone "https://github.com/mongodb/mongo-tools.git" --branch "$ASDF_INSTALL_VERSION" --single-branch
 
 ) || (
   echo $'Download failed' 1>&2

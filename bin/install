@@ -2,8 +2,15 @@
 
 set -e
 
-[ -n "$ASDF_INSTALL_PATH" ] || (echo $'Missing ASDF_INSTALL_PATH' 1>&2; exit 1)
-[ "$ASDF_INSTALL_TYPE" == "version" ] || (echo $'asdf-mongo-tools supports release installs only' 1>&2; exit 1)
+[ -n "$ASDF_INSTALL_PATH" ] || (
+  echo $'Missing ASDF_INSTALL_PATH' 1>&2
+  exit 1
+)
+
+[ "$ASDF_INSTALL_TYPE" == "version" ] || (
+  echo $'asdf-mongo-tools supports release installs only' 1>&2
+  exit 1
+)
 
 # shellcheck source=bin/download
 [ -x "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools/build.sh" ] || . "$(dirname "$0")/download"
