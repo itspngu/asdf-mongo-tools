@@ -12,11 +12,12 @@ set -e
   mkdir -p "$ASDF_INSTALL_PATH/bin" &&
     export GOBIN="$ASDF_INSTALL_PATH/bin" &&
     cd "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools" &&
-    ./make build &&
+    go run build.go build &&
+    go run build.go test:unit &&
     echo $'mongo-tools have been installed.' &&
     exit 0
 ) || (
-  rm -rf "$ASDF_INSTALL_PATH" &&
+  rm -rf "$ASDF_INSTALL_PATH" "$ASDF_DOWNLOAD_PATH" &&
     echo $'An error ocurred while installing mongo-tools $ASDF_INSTALL_VERSION' 1>&2 &&
     exit 1
 )
