@@ -13,10 +13,11 @@ on:
 jobs:
   plugin_test:
     name: asdf plugin test
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
+#    strategy:
+#      matrix:
+#        os: [ubuntu-latest, macos-latest]
+#    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     env:
       GOPATH: ${{ github.workspace }}
     steps:
