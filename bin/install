@@ -16,13 +16,14 @@ set -e
 [ -x "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools/build.sh" ] || . "$(dirname "$0")/download"
 
 (
+  export GOBIN="$ASDF_INSTALL_PATH/bin"
+  mkdir -p "$ASDF_INSTALL_PATH/bin"
+
   cd "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools"
 
-  ./build.sh
-#  ./test.sh
-
-  mkdir -p "$ASDF_INSTALL_PATH/bin"
-  cp "./bin/*" "$ASDF_INSTALL_PATH/bin/"
+  ./build.sh ssl
+  #./test.sh
+  #cp "./bin/*" "$ASDF_INSTALL_PATH/bin/"
 
   echo $'mongo-tools have been installed.'
 
