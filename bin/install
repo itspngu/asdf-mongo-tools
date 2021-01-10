@@ -16,7 +16,7 @@ set -e
 
   mkdir -p "$ASDF_INSTALL_PATH/bin"
   cp "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools/bin/*" "$ASDF_INSTALL_PATH/bin/"
-  
+
   echo $'mongo-tools have been installed.'
 
 ) || (
