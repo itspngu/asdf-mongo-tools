@@ -12,7 +12,7 @@ set -e
   exit 1
 )
 
-command -v go > /dev/null 2>&1 || (
+command -v go >/dev/null 2>&1 || (
   echo $'Could not find go executable. Make sure you have go version $_SUPPORTED_GO_VERSION installed.' 1>&2
   exit 1
 )
@@ -30,7 +30,7 @@ unset _SUPPORTED_GO_VERSION _INSTALLED_GO_VERSION
 (
   mkdir -p "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb"
   cd "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb"
-  git clone "https://github.com/mongodb/mongo-tools.git" --branch "$ASDF_INSTALL_VERSION" --single-branch
+  git clone "https://github.com/mongodb/mongo-tools.git" --branch "r$ASDF_INSTALL_VERSION" --single-branch
 
 ) || (
   echo $'Download failed' 1>&2
