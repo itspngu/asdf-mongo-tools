@@ -18,6 +18,8 @@ jobs:
         os: [ubuntu-latest, macos-latest]
         tools: [mongoimport, mongoexport, mongodump, mongorestore, bsondump, mongostat, mongotop, mongofiles]
     runs-on: ${{ matrix.os }}
+    env:
+      GOPATH: ${{ github.workspace }}
     steps:
       - name: install_go
         uses: actions/setup-go@v2
