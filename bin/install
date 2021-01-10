@@ -15,8 +15,10 @@ set -e
 # shellcheck source=bin/download
 [ -x "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools/build.sh" ] || . "$(dirname "$0")/download"
 
-export GOBIN="$ASDF_INSTALL_PATH/bin"
-[ -n "$GOROOT" ] || export GOROOT="$(go env GOROOT)"
+GOBIN="$ASDF_INSTALL_PATH/bin"
+[ -n "$GOROOT" ] || GOROOT="$(go env GOROOT)"
+
+export GOBIN GOROOT
 
 (
   mkdir -p "$ASDF_INSTALL_PATH/bin" &&
