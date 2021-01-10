@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+git ls-remote --tags --refs "https://github.com/mongodb/mongo-tools" |
+  sed -n "s/.*refs\/tags\/r\([[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+\)$/\1/p" |
+  xargs echo
