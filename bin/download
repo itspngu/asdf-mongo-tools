@@ -16,15 +16,15 @@ _INSTALLED_GO_VERSION="$(go version | sed -n "s/.*go\([[:digit:]]\+\.[[:digit:]]
 
 unset _SUPPORTED_GO_VERSION _INSTALLED_GO_VERSION
 
-[ -n "$GOROOT" ] || (echo $'Missing GOROOT' 1>&2 && exit 1)
+#[ -n "$GOROOT" ] || (echo $'Missing GOROOT' 1>&2 && exit 1)
 
-export GOPATH=$ASDF_DOWNLOAD_PATH GOBIN=$ASDF_DOWNLOAD_PATH/bin
+export GOPATH=$ASDF_DOWNLOAD_PATH
+#GOBIN=$ASDF_DOWNLOAD_PATH/bin
 
 (
   mkdir -p "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools" &&
     curl -fsSL "https://github.com/mongodb/mongo-tools/archive/r$ASDF_INSTALL_VERSION.tar.gz" |
     tar xzf - -C "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools" --strip-components=1 &&
-    ls -lah "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools" &&
     exit 0
 ) || (
   echo $'Download failed' 1>&2 &&
