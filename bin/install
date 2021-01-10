@@ -9,15 +9,23 @@ set -e
 [ -x "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools/build.sh" ] || . "$(dirname "$0")/download"
 
 (
-  mkdir -p "$ASDF_INSTALL_PATH/bin" &&
-    bash -c "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools/build.sh" &&
-    bash -c "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools/test.sh" &&
-    cp "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools/bin/*" "$ASDF_INSTALL_PATH/bin/" &&
-    rm -rf "$ASDF_INSTALL_PATH" "$ASDF_DOWNLOAD_PATH" &&
-    echo $'mongo-tools have been installed.' &&
-    exit 0
+  _ppwd="$(pwd)"
+  cd "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools"
+
+  ./build.sh ssl sasl
+  ./test.sh ssl sasl
+
+  mkdir -p "$ASDF_INSTALL_PATH/bin"
+  cp "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools/bin/*" "$ASDF_INSTALL_PATH/bin/"
+  
+  cd $_ppwd
+  unset $_ppwd
+  rm -rf "$ASDF_INSTALL_PATH" "$ASDF_DOWNLOAD_PATH"
+
+  echo $'mongo-tools have been installed.'
+
 ) || (
-  rm -rf "$ASDF_INSTALL_PATH" "$ASDF_DOWNLOAD_PATH" &&
-    echo $'An error ocurred while installing mongo-tools $ASDF_INSTALL_VERSION' 1>&2 &&
-    exit 1
+  rm -rf "$ASDF_INSTALL_PATH" "$ASDF_DOWNLOAD_PATH"
+  echo $'An error ocurred while installing mongo-tools $ASDF_INSTALL_VERSION' 1>&2
+  exit 1
 )
