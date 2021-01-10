@@ -6,14 +6,12 @@ set -e
 [ "$ASDF_INSTALL_TYPE" == "version" ] || (echo $'asdf-mongo-tools supports release installs only' 1>&2 && exit 1)
 
 # shellcheck source=bin/download
-[ -f "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools/make" ] || . "$(dirname "$0")/download"
+[ -d "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools" ] || . "$(dirname "$0")/download"
 
 (
   mkdir -p "$ASDF_INSTALL_PATH/bin" &&
-    export GOBIN="$ASDF_INSTALL_PATH/bin" &&
-    cd "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools" &&
-    go run build.go build &&
-    go run build.go test:unit &&
+    go run "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools/build.go" build &&
+#    go run "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools/build.go" test:unit &&
     echo $'mongo-tools have been installed.' &&
     exit 0
 ) || (
