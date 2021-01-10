@@ -29,8 +29,7 @@ unset _SUPPORTED_GO_VERSION _INSTALLED_GO_VERSION
 
 (
   mkdir -p "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb"
-  cd "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb"
-  git clone "https://github.com/mongodb/mongo-tools.git" --branch "r$ASDF_INSTALL_VERSION" --single-branch
+  git clone "https://github.com/mongodb/mongo-tools.git" --branch "r$ASDF_INSTALL_VERSION" --single-branch "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools"
 
 ) || (
   echo $'Download failed' 1>&2
