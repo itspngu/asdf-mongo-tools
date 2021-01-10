@@ -10,12 +10,14 @@
 
 - [Dependencies](#dependencies)
 - [Install](#install)
-- [License](#license)
+- [Mongo-Tools](#mongo-tools)
+- [License](#license)]
 
 # Dependencies
 
-- `curl` - for mongosh downloads from upstream releases
+- `curl`, `git` - for downloads of upstream releases
 - `bash` - asdf-vm is built on this
+- `go 1.15` - to build the tools
 
 # Install
 
@@ -37,6 +39,10 @@ asdf install mongo-tools latest
 # Set a version globally (on your ~/.tool-versions file)
 asdf global mongo-tools latest
 ```
+Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
+install & manage versions.
+
+# Mongo-Tools
 
 - `bsondump` - display BSON files in a human-readable format
 - `mongoimport` - Convert data from JSON, TSV or CSV and insert them into a collection
@@ -48,9 +54,6 @@ asdf global mongo-tools latest
 
 Refer to the [upstream mongo-tools repository](https://github.com/mongodb/mongo-tools) for documentation and
 usage instructions of the included tools.
-
-Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
-install & manage versions.
 
 # License
 
