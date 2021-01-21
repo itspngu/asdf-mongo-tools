@@ -7,17 +7,17 @@ on:
     paths-ignore:
       - "**.md"
   schedule:
-    - cron: "0 0 * * *" # daily at midnight
+    - cron: "0 0 * * 7" # weekly on saturday
   workflow_dispatch:
 
 jobs:
   plugin_test:
     name: asdf plugin test
-#    strategy:
-#      matrix:
-#        os: [ubuntu-latest, macos-latest]
-#    runs-on: ${{ matrix.os }}
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+#    runs-on: ubuntu-latest
     env:
       GOPATH: ${{ github.workspace }}
     steps:
@@ -26,7 +26,7 @@ jobs:
         with:
           go-version: 1.15.x
       - name: install-linux-libs
-#        if: matrix.os == "ubuntu-latest"
+        if: matrix.os == "ubuntu-latest"
         run: |
           set -eux;
           sudo apt-get update;
