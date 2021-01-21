@@ -3,12 +3,12 @@
 set -e
 
 [ -n "$ASDF_INSTALL_PATH" ] || (
-  echo $'Missing ASDF_INSTALL_PATH' 1>&2 &&
+  echo "Missing ASDF_INSTALL_PATH" 1>&2 &&
     exit 1
 )
 
 [ "$ASDF_INSTALL_TYPE" == "version" ] || (
-  echo $'asdf-mongo-tools supports release installs only' 1>&2 &&
+  echo "asdf-mongo-tools supports release installs only" 1>&2 &&
     exit 1
 )
 
@@ -24,10 +24,10 @@ export GOBIN GOROOT
   mkdir -p "$ASDF_INSTALL_PATH/bin" &&
     cd "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools" &&
     ./build.sh ssl sasl &&
-    echo $'mongo-tools have been installed.'
+    echo "mongo-tools have been installed."
 
 ) || (
   rm -rf "$ASDF_INSTALL_PATH" "$ASDF_DOWNLOAD_PATH" &&
-    echo $'An error ocurred while installing mongo-tools $ASDF_INSTALL_VERSION' 1>&2 &&
+    echo "An error ocurred while installing mongo-tools $ASDF_INSTALL_VERSION" 1>&2 &&
     exit 1
 )

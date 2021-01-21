@@ -13,11 +13,16 @@
 - [Mongo-Tools](#mongo-tools)
 - [License](#license)
 
-# Dependencies
+# Build Dependencies
 
 - `git` - for downloads of upstream releases
 - `bash` - asdf-vm is built on this
 - `go 1.15` - to build the tools
+
+On Linux: 
+
+- `libsasl2-dev`
+- `libpcap-dev`
 
 # Install
 
