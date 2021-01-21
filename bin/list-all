@@ -3,5 +3,5 @@
 set -e
 
 git ls-remote --tags --refs "https://github.com/mongodb/mongo-tools" |
-  sed -n "s/.*refs\/tags\/r\([[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+\)$/\1/p" |
+  sed -En -e "s:.*refs/tags/r([0-9]+\.[0-9]+\.[0-9]+)$:\1:p" |
   xargs echo
