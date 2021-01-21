@@ -15,7 +15,7 @@ jobs:
     name: asdf plugin test
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ ubuntu-latest, macos-latest ]
     runs-on: ${{ matrix.os }}
     env:
       GOPATH: ${{ github.workspace }}
@@ -25,7 +25,7 @@ jobs:
         with:
           go-version: 1.15.x
       - name: install-linux-libs
-        if: matrix.os == "ubuntu-latest"
+        if: ${{ matrix.os == "ubuntu-latest" }}
         run: |
           set -eux;
           sudo apt-get update;
