@@ -23,7 +23,8 @@ export GOBIN GOROOT
 (
   mkdir -p "$ASDF_INSTALL_PATH/bin" &&
     cd "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools" &&
-    ./build.sh ssl &&
+    ./build.sh ssl sasl &&
+    ./test.sh &&
     echo $'mongo-tools have been installed.'
 
 ) || (
