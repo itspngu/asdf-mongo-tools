@@ -7,7 +7,7 @@ on:
     paths-ignore:
       - "**.md"
   schedule:
-    - cron: "0 0 * * 7" # weekly on saturday
+    - cron: "0 0 * * 6" # weekly on saturday
   workflow_dispatch:
 
 jobs:
@@ -17,7 +17,6 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
-#    runs-on: ubuntu-latest
     env:
       GOPATH: ${{ github.workspace }}
     steps:
