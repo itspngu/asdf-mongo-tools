@@ -6,19 +6,21 @@
 
 </div>
 
-# Contents
+## Contents
 
-- [Dependencies](#dependencies)
+- [Plugin Dependencies](#plugin-dependencies)
+- [Build Dependencies](#build-dependencies)
+- [mongo-tools Dependencies](#mongo-tools-dependencies)
 - [Install](#install)
 - [Mongo-Tools](#mongo-tools)
 - [License](#license)
 
-# Plugin Dependencies
+## Plugin Dependencies
 
 - `bash` - asdf-vm is built on this
 - `git` - for downloads of upstream releases
 
-# Build Dependencies
+## Build Dependencies
 
 - `go 1.15` - to build the tools
 
@@ -27,11 +29,11 @@ On Linux you also need some extra development headers:
 - `libsasl2-dev` - Plugin is built with SASL authentication available
 - `libpcap-dev`- Needed by `mongoreplay`
 
-# mongo-tools Dependencies
+## mongo-tools Dependencies
 
 None
 
-# Install
+## Install
 
 Plugin:
 
@@ -54,7 +56,7 @@ asdf global mongo-tools latest
 Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
 install & manage versions.
 
-# Mongo-Tools
+## Mongo-Tools
 
 - `bsondump` - display BSON files in a human-readable format
 - `mongoimport` - Convert data from JSON, TSV or CSV and insert them into a collection
@@ -67,6 +69,6 @@ install & manage versions.
 Refer to the [upstream mongo-tools repository](https://github.com/mongodb/mongo-tools) for documentation and
 usage instructions of the included tools.
 
-# License
+## License
 
 See [LICENSE](LICENSE)
