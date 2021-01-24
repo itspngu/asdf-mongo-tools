@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: luizm/action-sh-checker@v0.1.9
+    - uses: luizm/action-sh-checker@v0.1.11
 
   build-and-test:
     needs: lint-shell
