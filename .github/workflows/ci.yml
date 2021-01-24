@@ -1,4 +1,4 @@
-name: Main
+name: CI
 
 on:
   push: []
@@ -14,11 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: luizm/action-sh-checker@v0.1.10
-      env:
-#        SHELLCHECK_OPTS: "-x bin/*"
-        SHFMT_OPTS: "-d -i 2 -ci bin"
-      with:
-        sh_checker_checkbashisms_enable: true
 
   build-and-test:
     needs: lint-shell

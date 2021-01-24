@@ -7,7 +7,7 @@ set -e
     exit 1
 )
 
-[ "$ASDF_INSTALL_TYPE" == "version" ] || (
+[ $ASDF_INSTALL_TYPE == "version" ] || (
   echo "asdf-mongo-tools supports release installs only" 1>&2 &&
     exit 1
 )
