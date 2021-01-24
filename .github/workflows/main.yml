@@ -19,7 +19,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: luizm/action-sh-checker@v0.1.10
-      env:
+#      env:
 #        SHELLCHECK_OPTS: "-x bin/*"
 #        SHFMT_OPTS: "-d -i 2 -ci bin"
 #      with:
