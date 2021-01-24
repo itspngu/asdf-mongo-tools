@@ -1,6 +1,6 @@
 <div align="center">
 
-# asdf-mongo-tools ![Build](https://github.com/itspngu/asdf-mongo-tools/workflows/Build/badge.svg) ![Lint](https://github.com/itspngu/asdf-mongo-tools/workflows/Lint/badge.svg)
+# asdf-mongo-tools ![CI](https://github.com/itspngu/asdf-mongo-tools/workflows/Main/badge.svg)
 
 [mongo-tools](https://github.com/mongodb/mongo-tools) plugin for the [asdf version manager](https://asdf-vm.com).
 
@@ -13,16 +13,23 @@
 - [Mongo-Tools](#mongo-tools)
 - [License](#license)
 
+# Plugin Dependencies
+
+- `bash` - asdf-vm is built on this
+- `git` - for downloads of upstream releases
+
 # Build Dependencies
 
-- `git` - for downloads of upstream releases
-- `bash` - asdf-vm is built on this
 - `go 1.15` - to build the tools
 
-On Linux: 
+On Linux you also need some extra development headers:
 
-- `libsasl2-dev`
-- `libpcap-dev`
+- `libsasl2-dev` - Plugin is built with SASL authentication available
+- `libpcap-dev`- Needed by `mongoreplay`
+
+# mongo-tools Dependencies
+
+None
 
 # Install
 

@@ -1,0 +1,53 @@
+name: Main
+
+on:
+  push: []
+  pull_request: []
+  workflow_dispatch: []
+  schedule:
+  - cron: "* */12 * * 1-5"
+
+jobs:
+
+  lint-shell:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+        - ubuntu-latest
+        - macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: luizm/action-sh-checker@v0.1.10
+      env:
+        SHELLCHECK_OPTS: "-x bin/*"
+        SHFMT_OPTS: "-d -i 2 -ci bin"
+      with:
+        sh_checker_checkbashisms_enable: true
+
+  build-and-test:
+    needs: lint-shell
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+        - ubuntu-latest
+        - macos-latest
+    env:
+      GOPATH: ${{ github.workspace }}
+    steps:
+    - uses: actions/setup-go@v2
+      with:
+        go-version: 1.15.x
+    - name: install-linux-libs
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        set -eux;
+        sudo apt-get update;
+        sudo apt-get install --yes --no-install-recommends \
+          libpcap-dev \
+          libsasl2-dev \
+        ;
+    - uses: asdf-vm/actions/plugin-test@v1
+      with:
+        command: mongostat --version
