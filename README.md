@@ -1,6 +1,6 @@
 <div align="center">
 
-# asdf-mongo-tools ![CI](https://github.com/itspngu/asdf-mongo-tools/workflows/Main/badge.svg)
+# asdf-mongo-tools ![CI](https://github.com/itspngu/asdf-mongo-tools/workflows/CI/badge.svg)
 
 [mongo-tools](https://github.com/mongodb/mongo-tools) plugin for the [asdf version manager](https://asdf-vm.com).
 
