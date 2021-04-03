@@ -1,6 +1,6 @@
 <div align="center">
 
-# asdf-mongo-tools ![CI](https://github.com/itspngu/asdf-mongo-tools/workflows/CI/badge.svg)
+# asdf-mongo-tools ![CI](https://github.com/itspngu/asdf-mongo-tools/workflows/CI/badge.svg) ![Lint](https://github.com/itspngu/asdf-mongosh/workflows/Lint/badge.svg)
 
 [mongo-tools](https://github.com/mongodb/mongo-tools) plugin for the [asdf version manager](https://asdf-vm.com).
 
@@ -9,19 +9,13 @@
 ## Contents
 
 - [Plugin Dependencies](#plugin-dependencies)
-- [Build Dependencies](#build-dependencies)
-- [mongo-tools Dependencies](#mongo-tools-dependencies)
 - [Install](#install)
-- [Mongo-Tools](#mongo-tools)
+- [mongo-tools](#mongo-tools)
 - [License](#license)
 
 ## Plugin Dependencies
 
-- `bash` - asdf-vm is built on this
 - `git` - for downloads of upstream releases
-
-## Build Dependencies
-
 - `go 1.15` - to build the tools
 
 On Linux you also need some extra development headers:
@@ -29,34 +23,31 @@ On Linux you also need some extra development headers:
 - `libsasl2-dev` - Plugin is built with SASL authentication available
 - `libpcap-dev`- Needed by `mongoreplay`
 
-## mongo-tools Dependencies
-
-None
-
 ## Install
 
 Plugin:
 
 ```shell
-asdf plugin add mongo-tools https://github.com/itspngu/asdf-mongo-tools.git
+$ asdf plugin-add mongo-tools https://github.com/itspngu/asdf-mongo-tools.git
 ```
 
 mongo-tools:
 
 ```shell
 # Show all installable versions
-asdf list-all mongo-tools
+$ asdf list-all mongo-tools
 
 # Install specific version
-asdf install mongo-tools latest
+$ asdf install mongo-tools latest
 
-# Set a version globally (on your ~/.tool-versions file)
-asdf global mongo-tools latest
+# Set a version globally (in your ~/.tool-versions file)
+$ asdf global mongo-tools latest
 ```
+
 Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
 install & manage versions.
 
-## Mongo-Tools
+## mongo-tools
 
 - `bsondump` - display BSON files in a human-readable format
 - `mongoimport` - Convert data from JSON, TSV or CSV and insert them into a collection

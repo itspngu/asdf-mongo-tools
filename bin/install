@@ -1,31 +1,28 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 set -e
 
-[ -n "$ASDF_INSTALL_PATH" ] || (
-  echo "Missing ASDF_INSTALL_PATH" 1>&2 &&
-    exit 1
-)
+: "${ASDF_INSTALL_PATH:?"Missing ASDF_INSTALL_PATH"}"
+: "${ASDF_INSTALL_TYPE:?"Missing ASDF_INSTALL_TYPE"}"
+: "${ASDF_INSTALL_VERSION:?"Missing ASDF_INSTALL_VERSION"}"
+: "${ASDF_DOWNLOAD_PATH:?"Missing ASDF_DOWNLOAD_PATH"}"
 
 [ "$ASDF_INSTALL_TYPE" == "version" ] || (
   echo "asdf-mongo-tools supports release installs only" 1>&2 &&
     exit 1
 )
 
-# shellcheck source=bin/download
+# shellcheck source=SCRIPTDIR/download
 [ -x "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools/build.sh" ] || . "$(dirname "$0")/download"
 
-GOBIN="$ASDF_INSTALL_PATH/bin"
 [ -n "$GOROOT" ] || GOROOT="$(go env GOROOT)"
-
-export GOBIN GOROOT
 
 (
   mkdir -p "$ASDF_INSTALL_PATH/bin" &&
     cd "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools" &&
-    ./build.sh ssl sasl &&
-    echo "mongo-tools have been installed."
-
+    GOBIN="$ASDF_INSTALL_PATH/bin" GOROOT=$GOROOT ./build.sh ssl sasl &&
+    echo "mongo-tools have been installed." &&
+    rm -rf "$ASDF_DOWNLOAD_PATH"
 ) || (
   rm -rf "$ASDF_INSTALL_PATH" "$ASDF_DOWNLOAD_PATH" &&
     echo "An error ocurred while installing mongo-tools $ASDF_INSTALL_VERSION" 1>&2 &&
