@@ -18,10 +18,12 @@
 - `git` - for downloads of upstream releases
 - `go 1.15` - to build the tools
 
-On Linux you also need some extra development headers:
+On Linux (Debian/Ubuntu) you also need some extra development headers:
 
 - `libsasl2-dev` - Plugin is built with SASL authentication available
 - `libpcap-dev`- Needed by `mongoreplay`
+
+On Fedora/RHEL the libraries are called `cyrus-sasl-devel` and `libpcap-devel`, respectively.
 
 ## Install
 
