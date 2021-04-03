@@ -33,25 +33,4 @@ jobs:
         ;
     - uses: asdf-vm/actions/plugin-test@v1
       with:
-        command: bsondump --version
-    - uses: asdf-vm/actions/plugin-test@v1
-      with:
-        command: mongoimport --version
-    - uses: asdf-vm/actions/plugin-test@v1
-      with:
-        command: mongoexport --version
-    - uses: asdf-vm/actions/plugin-test@v1
-      with:
         command: mongodump --version
-    - uses: asdf-vm/actions/plugin-test@v1
-      with:
-        command: mongorestore --version
-    - uses: asdf-vm/actions/plugin-test@v1
-      with:
-        command: mongostat --version
-    - uses: asdf-vm/actions/plugin-test@v1
-      with:
-        command: mongofiles --version
-    - uses: asdf-vm/actions/plugin-test@v1
-      with:
-        command: mongotop --version
