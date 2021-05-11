@@ -21,6 +21,7 @@ set -e
   mkdir -p "$ASDF_INSTALL_PATH/bin" &&
     cd "$ASDF_DOWNLOAD_PATH/src/github.com/mongodb/mongo-tools" &&
     GOBIN="$ASDF_INSTALL_PATH/bin" GOROOT=$GOROOT ./build.sh ssl sasl &&
+    mv "${ASDF_DOWNLOAD_PATH}"/src/github.com/mongodb/mongo-tools/bin/* "${ASDF_INSTALL_PATH}/bin/" &&
     echo "mongo-tools have been installed." &&
     rm -rf "$ASDF_DOWNLOAD_PATH"
 ) || (
