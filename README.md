@@ -6,6 +6,10 @@
 
 </div>
 
+## ARCHIVAL NOTICE
+
+I stopped using asdf-vm and archived this repository. If you're using this plugin, please consider forking the repository and having it added to the upstream plugin list at https://github.com/asdf-vm/asdf-plugins.
+
 ## Contents
 
 - [Plugin Dependencies](#plugin-dependencies)
